@@ -1,0 +1,2 @@
+#alias ChimeraDeviceDescriptor
+oven   (sharedMemoryDummy?map=oven.map)
