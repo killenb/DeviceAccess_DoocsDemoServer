@@ -6,6 +6,7 @@ int main(int argc, char* argv[]) {
   server.register_location_class<EqFctOven>();
 
   // Before we can start the server, we must set the DMap file path
+  ChimeraTK::setDMapFilePath("oven.dmap");
 
   server.run(argc, argv);
 

@@ -16,15 +16,16 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/set_default_flags.cmake)
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 include(${CMAKE_SOURCE_DIR}/cmake/add_dependency.cmake)
-add_dependency(DOOCS 20.10.0 server REQUIRED)
+add_dependency(DOOCS 20.10.1 server REQUIRED)
+add_dependency(ChimeraTK-DeviceAccess 02.02 REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 AUX_SOURCE_DIRECTORY(${CMAKE_SOURCE_DIR}/src server_sources)
 
 add_executable(${PROJECT_NAME} ${server_sources})
-target_link_libraries(${PROJECT_NAME} ${DOOCS_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${DOOCS_LIBRARIES} ${ChimeraTK-DeviceAccess_LIBRARIES})
 
-FILE(COPY config/oven_server.conf DESTINATION ${PROJECT_BINARY_DIR})
+FILE(COPY config/oven_server.conf config/oven.map config/oven.dmap DESTINATION ${PROJECT_BINARY_DIR})
 
 # Install the executabe and the config template
 #if("${CMAKE_INSTALL_PREFIX}" STREQUAL "/export/doocs/server")
