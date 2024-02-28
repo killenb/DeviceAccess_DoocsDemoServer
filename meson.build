@@ -30,7 +30,8 @@ configure_file(input : 'config/oven_server.conf',
 # Libraries we depend on
 dep = [
     dependency('doocs-serverlib'),
-    dependency('ChimeraTK-DeviceAccess')
+    dependency('ChimeraTK-DeviceAccess', method: 'cmake', modules: ['ChimeraTK::ChimeraTK-DeviceAccess']),
+    meson.get_compiler('cpp').find_library('atomic', required:true)
 ]
 
 # The server executable
